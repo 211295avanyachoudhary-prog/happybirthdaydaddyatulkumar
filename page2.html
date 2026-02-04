@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Memories 💖</title>
+   
+
+
+<style>
+  .next-container {
+    padding:14px 30px;
+    border:none;
+     right:30px;
+    z-index:999;
+}
+
+  .next-container{
+    position:fixed;
+    bottom:30px;
+    border-radius:35px;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    color:black;
+    background:linear-gradient(45deg,#ffd700,#ff0080);
+    box-shadow:0 0 30px rgba(255,215,0,0.9);
+    transition:all 0.3s ease;
+}
+
+.next-container button:hover{
+    transform:scale(1.1);
+    box-shadow:0 0 45px rgba(255,0,128,1);
+}
+
+  body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #fff1eb, #ace0f9);
+    overflow: hidden;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  .center-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    text-align: center;
+    background: rgba(255,255,255,0.8);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    z-index: 2;
+  }
+
+  .center-text h1 {
+    color: #ff4d6d;
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+
+  .center-text p {
+    font-size: 18px;
+    color: #444;
+    line-height: 1.6;
+  }
+
+  .photo {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 20px;
+    object-fit: cover;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 1.5s ease;
+  }
+
+  /* Final positions (corners) */
+  .top-left { top: 20px; left: 20px; }
+  .top-right { top: 20px; right: 20px; }
+  .bottom-left { bottom: 20px; left: 20px; }
+  .bottom-right { bottom: 20px; right: 20px; }
+
+  .show {
+    opacity: 1;
+    transform: scale(1);
+  }
+  button:hover {background-color: aliceblue;
+  transform: scale(1.02);}
+  
+</style>
+</head>
+
+<body>
+  
+<audio id="song">
+    <source src="blue.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Photos -->
+<img src="photo1.jpg" class="photo" id="p1">
+<img src="photo2.jpg" class="photo" id="p2">
+<img src="photo3.jpg" class="photo" id="p3">
+<img src="photo4.jpg" class="photo" id="p4">
+
+<!-- Center content -->
+<div class="center-text">
+    
+  <h1>Forever Moments 💕</h1>
+  <p>
+    Every smile of yours,<br>
+    every sacrifice you made,<br>
+    every silent prayer for us —<br><br>
+    these memories are not just photos,<br>
+    they are pieces of my heart 💖
+  </p>
+</div>
+
+<script>
+  const photos = [
+    { id: "p1", class: "top-left" },
+    { id: "p2", class: "top-right" },
+    { id: "p3", class: "bottom-left" },
+    { id: "p4", class: "bottom-right" }
+  ];
+
+  photos.forEach((photo, index) => {
+    setTimeout(() => {
+      const img = document.getElementById(photo.id);
+      img.classList.add("show", photo.class);
+    }, (index + 1) * 1200);
+  });
+
+
+</script>
+ 
+<button onclick="location.href='page3.html'">
+ 
+    Next Surprise 🎂
+</button>
+<div class="next-container">
+  <button onclick="goNext()">Next ➜</button>
+</div>
+<script>
+function goNext(){
+    window.location.href = "video.html";
+}
+</script>
+<script>
+const music = document.getElementById("song");
+
+// try autoplay
+music.play().catch(()=>{});
+
+// unmute on first interaction
+document.addEventListener("click", () => {
+  music.muted = false;
+  music.play();
+}, { once: true });
+</script>
+
+</body>
+</html>
