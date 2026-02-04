@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Bapu ❤️</title>
+
+<style>
+   .next-container{
+    position:fixed;
+    bottom:30px;
+    right:30px;
+    z-index:999;
+}
+
+.next-container button{
+    padding:14px 30px;
+    border:none;
+    border-radius:35px;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    color:black;
+    background:linear-gradient(45deg,#ffd700,#ff0080);
+    box-shadow:0 0 30px rgba(255,215,0,0.9);
+    transition:all 0.3s ease;
+}
+
+.next-container button:hover{
+    transform:scale(1.1);
+    box-shadow:0 0 45px rgba(255,0,128,1);
+} 
+
+
+    body {
+        margin: 0;
+        height: 100vh;
+        background: radial-gradient(circle, #050510, #000);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Poppins', sans-serif;
+        color: #aaa;
+        overflow: hidden;
+    }
+
+    .play-btn {
+        padding: 14px 35px;
+        border-radius: 30px;
+        border: none;
+        background: #ffd700;
+        color: #000;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-bottom: 30px;
+        box-shadow: 0 0 30px rgba(255,215,0,0.7);
+        transition: transform 0.3s;
+    }
+
+    .play-btn:hover {
+        transform: scale(1.1);
+    }
+
+    .lyrics {
+        max-width: 700px;
+        text-align: center;
+        font-size: 20px;
+        line-height: 1.8;
+    }
+
+    .line {
+        opacity: 0.3;
+        transition: all 0.3s ease;
+    }
+
+    .active {
+        opacity: 1;
+        color: #ffd700;
+        text-shadow: 0 0 20px rgba(255,215,0,0.8);
+        transform: scale(1.05);
+    }
+</style>
+</head>
+
+<body>
+    
+
+<button class="play-btn" onclick="startSong()">▶ Play From Heart</button>
+
+<div class="lyrics" id="lyrics">
+    <div class="line">Jihde Hundeyan Zindagi De Vich Lagda Na Dar</div>
+    <div class="line">Je Oh Haiga Mere Nal Java Duniya Na Lad</div>
+    <div class="line">Satt Janam Vi Lake Mod Saka Na Main Mul</div>
+    <div class="line">Har Cheez Vich Ditti Poori Ohne Khul</div>
+    <div class="line">Ik Cheez Mangi Ohne Do Si Davayi</div>
+    <div class="line">Har Ikk Reejh Bapu Tu Si Pugayi</div>
+    <div class="line">De Ditte Sare Mainu Zindagi De Sukh Sare</div>
+    <div class="line">Mere Ton Lakoye Ohne Jinne Vi Si Dukh</div>
+    <div class="line">Jehda Rupaye 5 Laike Aithe Khanda Siga Lays</div>
+    <div class="line">Ohde Shaunk An Layi Tu Kahton Geya Pardes</div>
+    <div class="line">Chheti Mil Bapu Sadda Lagda Na Jee</div>
+    <div class="line">Udeek Da A Putt Te Udeekdi A Dhee</div>
+    <div class="line">Ungal Tu Fadd Mainu Turna Sikhaya</div>
+</div>
+
+<audio id="song">
+    <source src="bapu-song.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+    let currentLine = 0;
+    let started = false;
+
+    function startSong() {
+        if (started) return;
+        started = true;
+
+        const audio = document.getElementById("song");
+        const lines = document.querySelectorAll(".line");
+
+        audio.play();
+        highlightLine();
+
+        function highlightLine() {
+            if (currentLine > 0) {
+                lines[currentLine - 1].classList.remove("active");
+            }
+
+            if (currentLine < lines.length) {
+                lines[currentLine].classList.add("active");
+                currentLine++;
+                setTimeout(highlightLine, 3500); // time per line
+            }
+        }
+    }
+</script>
+<div class="next-container">
+  <button onclick="goNext()">Next ➜</button>
+</div>
+<script>
+function goNext(){
+    window.location.href = "video2.html";
+}
+</script>
+
+</body>
+</html>
