@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You, daddy ❤️</title>
+<style>
+    
+.next-container{
+    position:fixed;
+    bottom:30px;
+    right:30px;
+    z-index:999;
+}
+
+.next-container button{
+    padding:14px 30px;
+    border:none;
+    border-radius:35px;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    color:black;
+    background:linear-gradient(45deg,#ffd700,#ff0080);
+    box-shadow:0 0 30px rgba(255,215,0,0.9);
+    transition:all 0.3s ease;
+}
+
+.next-container button:hover{
+    transform:scale(1.1);
+    box-shadow:0 0 45px rgba(255,0,128,1);
+}
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        height: 100vh;
+        background: radial-gradient(circle at top, #050510, #000);
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    /* Stars */
+    .star {
+        position: absolute;
+        background: white;
+        border-radius: 50%;
+        opacity: 0.8;
+        animation: floatStar 6s infinite alternate ease-in-out,
+                   twinkle 2s infinite ease-in-out;
+    }
+
+    @keyframes floatStar {
+        from {
+            transform: translateY(0px) scale(0.8);
+        }
+        to {
+            transform: translateY(-30px) scale(1.2);
+        }
+    }
+
+    @keyframes twinkle {
+        0%, 100% { opacity: 0.3; }
+        50% { opacity: 1; }
+    }
+
+    /* Video box */
+    .video-box {
+        position: relative;
+        z-index: 10;
+        border-radius: 20px;
+        box-shadow: 0 0 40px rgba(255, 215, 100, 0.6);
+        overflow: hidden;
+        animation: glow 3s infinite alternate;
+    }
+
+    @keyframes glow {
+        from {
+            box-shadow: 0 0 20px rgba(255, 215, 100, 0.4);
+        }
+        to {
+            box-shadow: 0 0 60px rgba(255, 215, 100, 0.9);
+        }
+    }
+
+    video {
+        width: 500px;
+        height: 600px;
+        display: block;
+        background: black;
+    }
+
+    /* Text */
+    .caption {
+        position: absolute;
+        bottom: -60px;
+        width: 100%;
+        text-align: center;
+        color: #ffd700;
+        font-size: 18px;
+        letter-spacing: 1px;
+    }
+</style>
+</head>
+
+<body>
+    
+
+
+<!-- Video -->
+<div class="video-box">
+    <video controls>
+        <source src="video2.mp4" type="video/mp4">
+        Your browser does not support video.
+    </video>
+    <div class="caption">Forever our guiding star ✨</div>
+</div>
+
+<script>
+    // Create stars
+    for (let i = 0; i < 80; i++) {
+        const star = document.createElement("div");
+        star.className = "star";
+
+        const size = Math.random() * 3 + 1;
+        star.style.width = size + "px";
+        star.style.height = size + "px";
+
+        star.style.left = Math.random() * 100 + "vw";
+        star.style.top = Math.random() * 100 + "vh";
+
+        star.style.animationDuration =
+            Math.random() * 4 + 3 + "s";
+
+        document.body.appendChild(star);
+    }
+
+</script>
+
+
+
+
+<div class="next-container">
+  <button onclick="goNext()">Next ➜</button>
+</div>
+<script>
+function goNext(){
+    window.location.href = "secret.html";
+}
+</script>
+</body>
+</html>
