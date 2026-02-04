@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Forever Our Hero</title>
+
+<style>
+ .next-container{
+    position:fixed;
+    bottom:30px;
+    right:30px;
+    z-index:999;
+}
+
+.next-container button{
+    padding:14px 30px;
+    border:none;
+    border-radius:35px;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    color:black;
+    background:linear-gradient(45deg,#ffd700,#ff0080);
+    box-shadow:0 0 30px rgba(255,215,0,0.9);
+    transition:all 0.3s ease;
+}
+
+.next-container button:hover{
+    transform:scale(1.1);
+    box-shadow:0 0 45px rgba(255,0,128,1);
+} 
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    overflow:hidden;
+    font-family:'Poppins', sans-serif;
+    background: linear-gradient(120deg,
+        #ff0080,
+        #7928ca,
+        #2afadf,
+        #ffd700,
+        #ff4ecd
+    );
+    background-size: 400% 400%;
+    animation: gradientMove 12s ease infinite;
+}
+
+/* 🌈 BACKGROUND ANIMATION */
+@keyframes gradientMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* ✨ PARTICLES */
+.particle{
+    position:absolute;
+    border-radius:50%;
+    opacity:0.8;
+    animation: floatUp linear infinite, blink 2s infinite;
+}
+
+@keyframes floatUp{
+    from{transform:translateY(100vh);}
+    to{transform:translateY(-10vh);}
+}
+
+@keyframes blink{
+    0%,100%{opacity:0.3;}
+    50%{opacity:1;}
+}
+
+/* 🎥 CENTER WRAPPER */
+.wrapper{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    z-index:10;
+}
+
+/* 💛 TEXT */
+.title{
+    font-size:34px;
+    font-weight:700;
+    margin-bottom:10px;
+    color:white;
+    text-shadow:
+        0 0 10px #fff,
+        0 0 20px #ff0,
+        0 0 40px #ff00ff;
+    animation:pulseText 3s infinite;
+}
+
+.subtitle{
+    color:#fff;
+    opacity:0.9;
+    margin-bottom:30px;
+    font-size:18px;
+}
+
+@keyframes pulseText{
+    0%{text-shadow:0 0 10px #fff;}
+    50%{text-shadow:0 0 40px #ffd700;}
+    100%{text-shadow:0 0 10px #fff;}
+}
+
+/* 🎬 VIDEO BOX */
+.video-box{
+    border-radius:30px;
+    overflow:hidden;
+    animation: rainbowGlow 4s infinite alternate;
+}
+
+@keyframes rainbowGlow{
+    from{
+        box-shadow:
+            0 0 30px #ff0080,
+            0 0 60px #7928ca;
+    }
+    to{
+        box-shadow:
+            0 0 40px #2afadf,
+            0 0 80px #ffd700,
+            0 0 120px #ff4ecd;
+    }
+}
+
+video{
+    width: 400px;
+    height: 650px;
+    background:black;
+    display:block;
+}
+</style>
+</head>
+
+<body>
+    
+
+<div class="wrapper">
+    <div class="title">Forever Our Hero 🌈</div>
+    <div class="subtitle">This light is because of you</div>
+
+    <div class="video-box">
+        <video controls>
+            <source src="video1.mp4" type="video/mp4">
+        </video>
+    </div>
+</div>
+
+<!-- 🎶 BACKGROUND MUSIC -->
+<audio autoplay loop>
+    <source src="soft-emotional.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+/* ✨ CREATE COLORFUL PARTICLES */
+const colors=["#fff","#ffd700","#ff00ff","#2afadf","#ff4ecd"];
+
+for(let i=0;i<120;i++){
+    const p=document.createElement("div");
+    p.className="particle";
+
+    const size=Math.random()*4+2;
+    p.style.width=size+"px";
+    p.style.height=size+"px";
+
+    p.style.left=Math.random()*100+"vw";
+    p.style.background=colors[Math.floor(Math.random()*colors.length)];
+    p.style.animationDuration=Math.random()*6+4+"s";
+
+    document.body.appendChild(p);
+}
+</script>
+<div class="next-container">
+  <button onclick="goNext()">Next ➜</button>
+</div>
+<div class="next-container">
+  <button onclick="alert('Happy Birthday daddy ❤️')">
+    💛 End of Journey
+  </button>
+</div>
+
+</body>
+</html>
